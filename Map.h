@@ -21,7 +21,7 @@ public:
     Map();
     
     
-    void Update(Player player);
+    void Update();
     void Draw();
 
     char UpBlock();
@@ -33,6 +33,10 @@ public:
     bool DownHit();
     bool LeftHit();
     bool RightHit();
+
+    void setter(int player_direction);
+    void Move(int direction);
+    void DirectionBlock();
 
 
 private:
@@ -53,11 +57,8 @@ private:
     bool left_hit;
     bool right_hit;
 
-    
-
-
-    void Move(int direction);
-    void DirectionBlock();
     void HitBlock(Vec2f size);
+
+    int player_direction;
 
 };

@@ -1,12 +1,12 @@
 #include "Map.h"
 
-
+///マップのコンストラクタ
 Map::Map(){
     
-    map_list[0] = std::ifstream("res/map1.txt");
-    map_list[1] = std::ifstream("res/map1.txt");
-    map_list[2] = std::ifstream("res/map1.txt");
-    map_list[3] = std::ifstream("res/map1.txt");
+    map_list[0] = std::ifstream("res/ahoyama.txt");
+    map_list[1] = std::ifstream("res/ahoyama1.txt");
+    map_list[2] = std::ifstream("res/ahoyama2.txt");
+    map_list[3] = std::ifstream("res/ahoyama3.txt");
 
     for (int y = 0; y < MAP_HEIGHT; y++)
     {
@@ -22,14 +22,18 @@ Map::Map(){
     speed = 20;
 }
 
-
-void Map::Update(Player player){
-    Move(player.Direction());
+////マップのアップデートなんだけど
+////まぁ本編では使わないかな
+////僕の考え方が間違ってたのが悪かった
+void Map::Update(){
+    Move(player_direction);
     DirectionBlock();
 
     
 }
 
+//マップの描画これはまとめてよかったかもしれない
+//描画域は後でちゃんとやってあげてね
 void Map::Draw(){
     
     for (int y = 0; y < MAP_HEIGHT; y++)
@@ -54,6 +58,9 @@ void Map::Draw(){
     //drawFillBox(-100, -100, 200, 200, Color::blue);
 }
 
+
+////マップを動かす処理
+//ここから
 void Map::Move(int direction){
     switch (direction)
     {
@@ -147,4 +154,3 @@ bool Map::LeftHit(){
 bool Map::RightHit(){
     return right_hit;
 }
-

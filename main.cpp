@@ -1,28 +1,22 @@
 ﻿#include "lib/framework.hpp"
 #include <iostream>
 #include "Singleton.h"
-#include "Map.h"
-#include "Player.h"
+#include "Scene.h"
 
 int main() {
 
 	
     ENV;
-    Player player;
-    Map map;
     
+    Scene scene;
 
   while (ENV.isOpen()) {
        ENV.begin();
        
 
        
-       map.Update(player);
-       map.Draw();
-       player.Update();
-       player.Draw();
-
-       
+       scene.Update();
+       scene.Draw();
 
       ENV.end();
   }
